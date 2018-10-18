@@ -22,7 +22,7 @@ class Clientes_model extends CI_Model
         $this->db->order_by('idClientes', 'desc');
         $this->db->limit($perpage, $start);
         if ($where) {
-            $this->db->where($where);
+            $this->db->like($where);
         }
         
         $query = $this->db->get();

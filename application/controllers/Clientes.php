@@ -27,38 +27,42 @@ class Clientes extends CI_Controller
 
     function gerenciar()
     {
-        
+               
         $this->load->library('pagination');
+
         
         $where_array = array();
 
-        $p1 = $this->input->get('p1');
-        $p2 = $this->input->get('p2');
-        $p3 = $this->input->get('p3');
-        $p4 = $this->input->get('p4');
-        $p5 = $this->input->get('p5');
-        $p6 = $this->input->get('p6');
-   
-
-        if ($p1) {
-            $where_array['p1'] = $p1;
+        $codigoCliente = $this->input->get('codigoCliente');
+        if ($codigoCliente) {
+            $where_array['codigoCliente'] = $codigoCliente;
         }
-        if ($p2) {
-            $where_array['p2'] = $p2;
+                
+        $nomeCliente = $this->input->get('nomeCliente');
+        if ($nomeCliente) {
+            $where_array['nomeCliente'] = $nomeCliente;
         }
-        if ($p3) {
-            $where_array['p3'] = $p3;
+                
+        $rua = $this->input->get('rua');
+        if ($rua) {
+            $where_array['rua'] = $rua;
         }
-        if ($p4) {
-            $where_array['p4'] = $p4;
+              
+        $bairro = $this->input->get('bairro');
+        if ($bairro) {
+            $where_array['bairro'] = $bairro;
         }
-        if ($p5) {
-            $where_array['p5'] = $p5;
-        }
-        if ($p6) {
-            $where_array['p6'] = $p6;
+    
+        $cidade = $this->input->get('cidade');
+        if ($cidade) {
+            $where_array['cidade'] = $cidade;
         }
         
+        $data = $this->input->get('data');
+        if ($data) {
+            $where_array['data'] = $data;
+        }
+                
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para visualizar clientes.');
@@ -92,7 +96,7 @@ class Clientes extends CI_Controller
         
         $this->pagination->initialize($config);
         
-        $this->data['results'] = $this->clientes_model->get('clientes', 'idClientes, codigoCliente, nomeCliente,documento,telefone,data,celular,email,rua,numero,bairro,cidade,estado,cep', '', $config['per_page'], $this->uri->segment(3));
+        $this->data['results'] = $this->clientes_model->get('clientes', 'idClientes, codigoCliente, nomeCliente,documento,telefone,data,celular,email,rua,numero,bairro,cidade,estado,cep', $where_array, $config['per_page'], $this->uri->segment(3));
         
         $this->data['view'] = 'clientes/clientes';
         $this->load->view('tema/topo', $this->data);

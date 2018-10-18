@@ -1,29 +1,31 @@
 <div class="span12" style="margin-left: 0">
-    <form method="get" action="<?php echo base_url(); ?>index.php/os/gerenciar">
+    <form method="get" action="<?php echo base_url(); ?>index.php/clientes/gerenciar">
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aCliente')) { ?>
 <div class="span2">
  
     <a href="<?php echo base_url();?>index.php/clientes/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Cliente</a>   </div>
         <?php } ?>
 
+Editando
+
         <div class="span3">
-            <input type="text" name="p1"  id="p1"  placeholder="Pesquisar Codigo" class="span10" value="" >
+            <input type="text" name="codigoCliente"  id="p1"  placeholder="Pesquisar Codigo" class="span10" value="" >
         </div>
         <div class="span3">
-            <input type="text" name="p2"  id="p2"  placeholder="Pesquisar Clientes" class="span10" value="" >
+            <input type="text" name="nomeCliente"  id="p2"  placeholder="Pesquisar Clientes" class="span10" value="" >
         </div>
         <div class="span3">
-            <input type="text" name="p3"  id="p3"  placeholder="Pesquisar Rua" class="span10" value="" >
+            <input type="text" name="rua"  id="p3"  placeholder="Pesquisar Rua" class="span10" value="" >
         </div>
         <div class="span3">
-            <input type="text" name="p4"  id="p4"  placeholder="Pesquisar Bairro" class="span10" value="" >
+            <input type="text" name="bairro"  id="p4"  placeholder="Pesquisar Bairro" class="span10" value="" >
         </div>
         <div class="span3">
-            <input type="text" name="p5"  id="p5"  placeholder="Pesquisar Cidade" class="span10" value="" >
+            <input type="text" name="cidade"  id="p5"  placeholder="Pesquisar Cidade" class="span10" value="" >
         </div>
         
         <div class="span3">
-            <input type="text" name="p6"  id="p6"  placeholder="Pesquisar Data Nascimento" class="span10" value="" >
+            <input type="text" name="data"  id="p6"  placeholder="Pesquisar Data Nascimento" class="span10" value="" >
         </div>
 
         <div class="span1">
