@@ -130,6 +130,7 @@ if (!$results) {?>
 <table class="table table-bordered ">
     <thead>
         <tr style="backgroud-color: #2D335B">
+            <th><a style="margin-right: 1%" href="#" onclick="imprimirSelecionados()" class="btn btn-inverse tip-top" title="Imprimir"><i class="icon-print"></i></a></th>
             <th>Código</th>
             <th>Cliente</th>
             <th>Bairro</th>
@@ -238,6 +239,7 @@ if (!$results) {?>
             }
 
             echo '<tr>';
+            echo '<td><center><input type="checkbox" name="os" value="'.$r->idOs.'" /></center></td>';
             echo '<td>'.$r->codigoCliente.'</td>';
             echo '<td>'.$r->nomeCliente.'</td>';
             echo '<td>'.$r->bairro.'</td>';
@@ -334,4 +336,16 @@ $(document).ready(function(){
 
 });
 
+function imprimirSelecionados(){
+
+    var url = "<?php echo base_url() ?>index.php/os/imprimir/";
+    var osSelecionadas = [];
+    $('input[name="os"]:checked').each(function(){
+        osSelecionadas.push(this.value);
+    })
+
+    window.open(url + osSelecionadas.join("-"));
+
+
+}
 </script>
