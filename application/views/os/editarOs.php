@@ -20,8 +20,10 @@
                         <li id="tabProdutos"><a href="#tab2" data-toggle="tab">Produtos</a></li>
                         <li id="tabServicos"><a href="#tab3" data-toggle="tab">Serviços</a></li>
                         <li id="tabAnexos"><a href="#tab4" data-toggle="tab">Anexos</a></li>
+                        <li id="tabHistorico"><a href="#tab5" data-toggle="tab">Historico</a></li>
                     </ul>
                     <div class="tab-content">
+
                         <div class="tab-pane active" id="tab1">
 
                             <div class="span12" id="divCadastrarOs">
@@ -143,8 +145,7 @@
                                             <textarea class="span12" name="laudoTecnico" id="laudoTecnico" cols="30" rows="5"><?php echo $result->laudoTecnico ?></textarea>
                                         </div>
                                     </div>
-                                    <h4>Histórico Status OS</h4></br>
-                                    <?php echo $result->hist ?> 
+                                    
                                     <div class="span12" style="padding: 1%; margin-left: 0">
                                         <div class="span6 offset3" style="text-align: center">
                                             <?php if ($result->faturado == 0) { ?>
@@ -314,6 +315,44 @@
                             </div>
                         </div>
                 
+
+                        <div class="tab-pane" id="tab5">
+
+                            <div class="span12" id="divProdutos" style="margin-left: 0">
+                                <table class="table table-bordered" id="tblProdutos">
+                                    <thead>
+                                        <tr>
+                                            <th>Data da Alteração</th>
+                                            <th>Usuario da Alteração</th>
+                                            <th>Status</th>
+                                            <th>Status Interno</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                                                             
+                                        echo '<tr>';
+                                        echo '<td><b>Atual</b></td>';
+                                        echo '<td>--</td>';
+                                        echo '<td>'.$result->status.'</td>';
+                                        echo '<td>'.$result->garantia.'</td>';
+                                        echo '</tr>';
+                                        
+                                        foreach ($result->historico as $p) {                                            
+                                            echo '<tr>';
+                                            echo '<td>'.date('d/m/Y H:i:s', strtotime($p->dataAlteracao)).'</td>';
+                                            echo '<td>'.$p->usuarioAlteracao.'</td>';
+                                            echo '<td>'.$p->status.'</td>';
+                                            echo '<td>'.$p->garantia.'</td>';
+                                            echo '</tr>';
+                                        }?>
+                                    
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            </div>
 
 
                     </div>

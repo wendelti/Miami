@@ -203,7 +203,9 @@ class Os_model extends CI_Model
         $this->db->join('usuarios', 'usuarios.idUsuarios = os.usuarios_id');
         $this->db->where('os.idOs', $id);
         $this->db->limit(1);
-        return $this->db->get()->row();
+        $os = $this->db->get()->row();
+        $os->historico = $this->db->where('idOs', $os->idOs)->order_by('dataAlteracao desc')->get('historico_os')->result();
+        return $os;
     }
 
     public function getProdutos($id = null)
@@ -239,8 +241,13 @@ class Os_model extends CI_Model
         return false;
     }
     
-    function edit($table, $data, $fieldID, $ID)
+    function edit($table, $data, $fieldID, $ID, $usuarioQueEstaEditando)
     {
+        
+        $os = $this->db->where($fieldID, $ID)->get('os')->row();
+        $os->usuarioAlteracao = $usuarioQueEstaEditando;
+        $this->db->insert('historico_os', $os);
+
         $this->db->where($fieldID, $ID);
         $this->db->update($table, $data);
 

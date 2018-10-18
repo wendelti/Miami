@@ -260,7 +260,7 @@ class Os extends CI_Controller
                 'clientes_id' => $this->input->post('clientes_id')
             );
 
-            if ($this->os_model->edit('os', $data, 'idOs', $this->input->post('idOs')) == true) {
+            if ($this->os_model->edit('os', $data, 'idOs', $this->input->post('idOs'), $this->session->userdata('nome')) == true) {
                 $this->session->set_flashdata('success', 'Os editada com sucesso!');
                 redirect(base_url() . 'index.php/os/editar/'.$this->input->post('idOs'));
             } else {
