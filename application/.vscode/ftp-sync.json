@@ -1,0 +1,24 @@
+{
+    "remotePath": "./public_html/miamitelas/mapos-master/application/",
+    "host": "oliveragencia.com.br",
+    "username": "oliveragencia",
+    "password": "f7147845147845",
+    "port": 21,
+    "secure": false,
+    "protocol": "ftp",
+    "uploadOnSave": true,
+    "passive": false,
+    "debug": true,
+    "privateKeyPath": null,
+    "passphrase": null,
+    "ignore": [
+        "\\.vscode",
+        "\\.git",
+        "\\.DS_Store"
+    ],
+    "generatedFiles": {
+        "uploadOnSave": true,
+        "extensionsToInclude": [],
+        "path": ""
+    }
+}
