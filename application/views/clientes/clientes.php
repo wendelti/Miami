@@ -6,8 +6,6 @@
     <a href="<?php echo base_url();?>index.php/clientes/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Cliente</a>   </div>
         <?php } ?>
 
-Editando
-
         <div class="span3">
             <input type="text" name="codigoCliente"  id="p1"  placeholder="Pesquisar Codigo" class="span10" value="" >
         </div>

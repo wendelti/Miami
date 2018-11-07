@@ -167,8 +167,8 @@
                             <thead>
                                 <tr style="backgroud-color: #2D335B">
                                     <th>#</th>
-                                    <th>Data Inicial</th>
-                                    <th>Data Final</th>
+                                    <th>Técnico</th>
+                                    <th>Ajudante</th>
                                     <th>Descricao</th>
                                     <th>Defeito</th>
                                     <th></th>
@@ -191,24 +191,21 @@
                             <thead>
                                 <tr style="backgroud-color: #2D335B">
                                     <th>#</th>
-                                    <th>Data Inicial</th>
-                                    <th>Data Final</th>
+                                    <th>Técnico</th>
+                                    <th>Ajudante</th>
                                     <th>Descricao</th>
-                                    <th>Defeito</th>
+                                    
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
 <?php
 foreach ($results as $r) {
-    $dataInicial = date(('d/m/Y'), strtotime($r->dataInicial));
-    $dataFinal = date(('d/m/Y'), strtotime($r->dataFinal));
     echo '<tr>';
     echo '<td>' . $r->idOs . '</td>';
-    echo '<td>' . $dataInicial . '</td>';
-    echo '<td>' . $dataFinal . '</td>';
+    echo '<td>' . $r->usuarios_id . '</td>';
+    echo '<td>' . $r->defeito  . '</td>';
     echo '<td>' . $r->descricaoProduto . '</td>';
-    echo '<td>' . $r->defeito . '</td>';
 
     echo '<td>';
     if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {

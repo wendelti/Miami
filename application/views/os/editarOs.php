@@ -322,28 +322,46 @@
                                 <table class="table table-bordered" id="tblProdutos">
                                     <thead>
                                         <tr>
-                                            <th>Data da Alteração</th>
-                                            <th>Usuario da Alteração</th>
+                                            <th>Data da OS</th>
+                                            <th>Técnico</th>
+                                            <th>Ajudante</th>
                                             <th>Status</th>
                                             <th>Status Interno</th>
+                                            <th>Descrição Produto/Serviço</th>
+                                            <th>Observações</th>
+                                            <th>Laudo Técnico</th>
+                                            <th>Usuario da Alteração</th>
+                                            <th>Data da Alteração</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                                                              
                                         echo '<tr>';
-                                        echo '<td><b>Atual</b></td>';
-                                        echo '<td>--</td>';
+                                        echo '<td><b>STATUS ATUAL</b></td>';
+                                        echo '<td>'.$result->nome.'</td>';
+                                        echo '<td>'.$result->defeito.'</td>';
                                         echo '<td>'.$result->status.'</td>';
                                         echo '<td>'.$result->garantia.'</td>';
+                                        echo '<td>'.$result->descricaoProduto.'</td>';
+                                        echo '<td>'.$result->observacoes.'</td>';
+                                        echo '<td>'.$result->laudoTecnico.'</td>';
+                                        echo '<td></td>';
+                                        echo '<td></td>';
                                         echo '</tr>';
                                         
                                         foreach ($result->historico as $p) {                                            
                                             echo '<tr>';
-                                            echo '<td>'.date('d/m/Y H:i:s', strtotime($p->dataAlteracao)).'</td>';
-                                            echo '<td>'.$p->usuarioAlteracao.'</td>';
+                                            echo '<td>'.$p->dataInicial.'</td>';
+                                            echo '<td>'.$p->usuarios_id.'</td>';
+                                            echo '<td>'.$p->defeito.'</td>';
                                             echo '<td>'.$p->status.'</td>';
                                             echo '<td>'.$p->garantia.'</td>';
+                                            echo '<td>'.$p->descricaoProduto.'</td>';
+                                            echo '<td>'.$p->observacoes.'</td>';
+                                            echo '<td>'.$p->laudoTecnico.'</td>';
+                                            echo '<td>'.$p->usuarioAlteracao.'</td>';
+                                            echo '<td>'.date('d/m/Y H:i:s', strtotime($p->dataAlteracao)).'</td>';
                                             echo '</tr>';
                                         }?>
                                     

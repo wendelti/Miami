@@ -50,7 +50,7 @@
                           <div class="control-group">
                         <label for="info" class="control-label">Informações</label>
                         <div class="controls">
-                            <input id="info" type="text" name="info" value="<?php echo set_value('info'); ?>"  />
+                             <textarea class="span12" name="info" id="info" cols="30" rows="5" value="<?php echo set_value('info'); ?>"></textarea>
                         </div>
                     </div>
                     <div class="control-group">
@@ -577,7 +577,7 @@
                                                 <option id='Vista Alegre'>Vista Alegre</option>
                                                 <option id='Vista Gaucha'>Vista Gaucha</option>
                                                 <option id='Vitoria das Missoes'>Vitoria das Missoes</option>
-                                                
+                                                <option id='Xangri-la'>Xangri-la</option>
                                                 </select>
 
                     </div>

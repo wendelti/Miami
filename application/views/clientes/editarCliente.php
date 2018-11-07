@@ -52,7 +52,7 @@
                     <div class="control-group">
                         <label for="info" class="control-label">Informações</label>
                         <div class="controls">
-                            <input id="info" type="text" name="info" value="<?php echo $result->info; ?>"  />
+                            <textarea class="span12" name="info" id="info" cols="30" rows="5"><?php echo $result->info ?></textarea>
                         </div>
                     </div>
                     <div class="control-group">
