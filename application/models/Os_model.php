@@ -204,7 +204,13 @@ class Os_model extends CI_Model
         $this->db->where('os.idOs', $id);
         $this->db->limit(1);
         $os = $this->db->get()->row();
-        $os->historico = $this->db->where('idOs', $os->idOs)->order_by('dataAlteracao desc')->get('historico_os')->result();
+        $os->historico = $this->db
+                                ->select('hos.*, u.nome NomeUsuario')
+                                ->join('usuarios u', 'u.idUsuarios = hos.usuarios_id')
+                                ->where('hos.idOs', $os->idOs)
+                                ->order_by('hos.dataAlteracao desc')
+                                ->get('historico_os hos')
+                                ->result();
         return $os;
     }
 

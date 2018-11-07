@@ -353,7 +353,7 @@
                                         foreach ($result->historico as $p) {                                            
                                             echo '<tr>';
                                             echo '<td>'.$p->dataInicial.'</td>';
-                                            echo '<td>'.$p->usuarios_id.'</td>';
+                                            echo '<td>'.$p->NomeUsuario.'</td>';
                                             echo '<td>'.$p->defeito.'</td>';
                                             echo '<td>'.$p->status.'</td>';
                                             echo '<td>'.$p->garantia.'</td>';
