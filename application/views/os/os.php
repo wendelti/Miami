@@ -292,6 +292,7 @@ if (!$results) {?>
 
         <h5>Ordens de Serviço</h5>
 
+        <h5 style="float:right">Total de Registros: <?php echo sizeof($results); ?></h5>
 
 
      </div>
@@ -602,7 +603,7 @@ if (!$results) {?>
 
 <?php 
     
-    echo $this->pagination->create_links();
+     //$this->pagination->create_links();
 
 }?>
 
