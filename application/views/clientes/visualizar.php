@@ -203,7 +203,7 @@
 foreach ($results as $r) {
     echo '<tr>';
     echo '<td>' . $r->idOs . '</td>';
-    echo '<td>' . $r->usuarios_id . '</td>';
+    echo '<td>' . $r->NomeUsuario . '</td>';
     echo '<td>' . $r->defeito  . '</td>';
     echo '<td>' . $r->descricaoProduto . '</td>';
 

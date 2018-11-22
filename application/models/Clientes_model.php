@@ -81,6 +81,10 @@ class Clientes_model extends CI_Model
         $this->db->where('clientes_id', $id);
         $this->db->order_by('idOs', 'desc');
         $this->db->limit(10);
+        
+        $this->db->select('os.*, u.nome NomeUsuario');
+        $this->db->join('usuarios u', 'u.idUsuarios = os.usuarios_id');
+        
         return $this->db->get('os')->result();
     }
 }
