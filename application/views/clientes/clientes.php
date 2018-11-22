@@ -42,6 +42,7 @@ if (!$results) {?>
                 <i class="icon-user"></i>
             </span>
             <h5>Clientes</h5>
+            <h5 style="float:right">Total de Registros: 0</h5>
 
         </div>
 
@@ -78,6 +79,7 @@ if (!$results) {?>
             <i class="icon-user"></i>
          </span>
         <h5>Clientes</h5>
+        <h5 style="float:right">Total de Registros: <?php echo sizeof($results); ?></h5>
 
      </div>
 
