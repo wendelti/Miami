@@ -44,82 +44,40 @@ class Os_model extends CI_Model
         $lista_clientes = array();
         if ($where) {
 
-            if (array_key_exists('pesquisa', $where)) {
-                $this->db->select('idClientes');
-                $this->db->like('nomeCliente', $where['pesquisa']);
-                $this->db->or_like('codigoCliente', $where['pesquisa']);
-                $this->db->limit(5);
-                $clientes = $this->db->get('clientes')->result();
+            if (array_key_exists('cliente', $where)) {
+                $this->db->where("( clientes.nomeCliente like '%{$where['cliente']}%' 
+                                    OR clientes.codigoCliente like '%{$where['cliente']}%' ) ");
+            }
+        }
+        
+        $lista_cidade = array();
+        if ($where) {
 
-                foreach ($clientes as $c) {
-                    array_push($lista_clientes, $c->idClientes);
-                }
+            if (array_key_exists('cidade', $where)) {
+                
+                $this->db->like('clientes.cidade', trim($where['cidade']));
 
             }
         }
         
-        $lista_clientess = array();
+        $lista_bairro = array();
         if ($where) {
 
-            if (array_key_exists('quisa', $where)) {
-                $this->db->select('idClientes');
-                $this->db->like('cidade', $where['quisa']);
-                $this->db->limit(5);
-                $clientes = $this->db->get('clientes')->result();
-
-                foreach ($clientes as $c) {
-                    array_push($lista_clientess, $c->idClientes);
-                }
-
-            }
-        }
-        
-        $lista_clientesss = array();
-        if ($where) {
-
-            if (array_key_exists('quis', $where)) {
-                $this->db->select('idClientes');
-                $this->db->like('bairro', $where['quis']);
-                $this->db->limit(5);
-                $clientes = $this->db->get('clientes')->result();
-
-                foreach ($clientes as $c) {
-                    array_push($lista_clientesss, $c->idClientes);
-                }
-
+            if (array_key_exists('bairro', $where)) {                
+                $this->db->like('clientes.bairro', trim($where['bairro']));
             }
         }
        
        
-        $lista_clientesssss = array();
+        $lista_tecnicos = array();
         if ($where) {
 
-            if (array_key_exists('pes', $where)) {
-                $this->db->select('idUsuarios');
-                $this->db->like('nome', $where['pes']);
-                $this->db->limit(5);
-                $usuarios = $this->db->get('usuarios')->result();
+            if (array_key_exists('tecnico', $where)) {
+                $this->db->where("( usuarios.nome like '%{$where['tecnico']}%' 
+                                    OR os.defeito like '%{$where['tecnico']}%' ) ");
+            }
+        }
 
-                foreach ($usuarios as $c) {
-                    array_push($lista_clientesssss, $c->idUsuarios);
-                }
-
-            }}
-            
-             $lista_clientessssss = array();
-        if ($where) {
-            
-            if (array_key_exists('pes', $where)) {
-                $this->db->select('idOs');
-                $this->db->like('defeito', $where['pes']);
-                $this->db->limit(5);
-                $os = $this->db->get('os')->result();
-
-                foreach ($os as $c) {
-                    array_push($lista_clientessssss, $c->idOs);
-                }
-
-            }}
         
 
         $this->db->select($fields.',clientes.nomeCliente, usuarios.nome, clientes.bairro, clientes.cidade, os.defeito, clientes.codigoCliente');
@@ -144,37 +102,7 @@ class Os_model extends CI_Model
             $this->db->where('osdata', $where['osdata']);
         }
 
-        // condicional de clientes
-        if (array_key_exists('pesquisa', $where)) {
-            if ($lista_clientes != null) {
-                $this->db->where_in('os.clientes_id', $lista_clientes);
-            }
-        }
         
-        // condicional de clientes
-        if (array_key_exists('quisa', $where)) {
-            if ($lista_clientess != null) {
-                $this->db->where_in('os.clientes_id', $lista_clientess);
-            }
-        }
-        
-        if (array_key_exists('quis', $where)) {
-            if ($lista_clientesss != null) {
-                $this->db->where_in('os.clientes_id', $lista_clientesss);
-            }
-        }
-        if (array_key_exists('pes', $where)) {
-            if ($lista_clientesssss != null) {
-                $this->db->where_in('os.usuarios_id', $lista_clientesssss);
-            }
-        }
-        
-        if (array_key_exists('pes', $where)) {
-            if ($lista_clientessssss != null) {
-                $this->db->where_in('os.clientes_id', $lista_clientessssss);
-            }
-        }
-
         // condicional data inicial
         if (array_key_exists('de', $where)) {
             $this->db->where('dataInicial >=', $where['de']);

@@ -34,10 +34,11 @@ class Os extends CI_Controller
         
         $where_array = array();
 
-        $pesquisa = $this->input->get('pesquisa');
-        $quisa = $this->input->get('quisa');
-        $quis = $this->input->get('quis');
-        $pes = $this->input->get('pes');
+        $cliente = $this->input->get('cliente');
+        $cidade = $this->input->get('cidade');
+        $bairro = $this->input->get('bairro');
+        $tecnico = $this->input->get('tecnico');
+
         $status = $this->input->get('status');
         $hist = $this->input->get('hist') . $this->input->get('status');
         $garantia = $this->input->get('garantia');
@@ -47,18 +48,19 @@ class Os extends CI_Controller
      
 
 
-        if ($pesquisa) {
-            $where_array['pesquisa'] = $pesquisa;
+        if ($cliente) {
+            $where_array['cliente'] = $cliente;
         }
-        if ($pes) {
-            $where_array['pes'] = $pes;
+        if ($tecnico) {
+            $where_array['tecnico'] = $tecnico;
         }
-        if ($quisa) {
-            $where_array['quisa'] = $quisa;
+        if ($cidade) {
+            $where_array['cidade'] = $cidade;
         }
-        if ($quis) {
-            $where_array['quis'] = $quis;
+        if ($bairro) {
+            $where_array['bairro'] = $bairro;
         }
+        
         if ($status) {
             $where_array['status'] = $status;
         }
